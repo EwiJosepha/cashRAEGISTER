@@ -7,7 +7,7 @@
 h1 {
   padding-top: 15px;
   text-align: center;
-  color: #3f3a3a;
+  color: #292525;
   font-family: sans-serif;
 }
 
@@ -19,7 +19,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #000;
+  background-color: #434040;
   border-radius: 10px;
   border: 2px solid #000;
   box-shadow: 2px 2px 20px 2px;
@@ -55,9 +55,11 @@ h1 {
 } */
 
 .secondDiv {
+  background-color: #aca6a6;
   display: flex;
   gap: 1rem;
-  width: 44%;
+  width: 55%;
+  height: 100px;
 }
 
 
