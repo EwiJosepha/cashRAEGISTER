@@ -89,13 +89,13 @@ function App() {
               <input className="submit2" type="submit" placeholder="Submit" />
             </div>
           </div>
-          <h2>Return Change</h2>
+          <button className="button">Return Change</button>
           <div className="secondDiv">
             {money.map((money) => (
               <div  key={money.id} className="all">
                 <h4>{money.name}</h4>
                 <div className="number">
-                  <h5>{money.number}</h5>
+                  <div className="divv">{money.number}</div>
                 </div>
               </div>
             ))}

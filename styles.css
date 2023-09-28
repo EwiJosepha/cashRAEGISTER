@@ -55,13 +55,15 @@ h1 {
 } */
 
 .secondDiv {
+  padding: 30px;
   background-color: #aca6a6;
+  box-shadow: 2px 2px 22px 2px;
   display: flex;
   gap: 1rem;
-  width: 55%;
-  height: 100px;
+  width: 70%;
+  height: 40%;
+  flex-wrap: wrap;
 }
-
 
 
 .input1 {
@@ -137,8 +139,22 @@ h4 {
   color: #fff;
 }
 
-.number {
-  color: #fff;
-  background-color: #ffe4c4;
 
+.divv {
+  border: none;
+  box-shadow: 2px 2px 2px 1px;
+  background-color: #ffe4c4;
+  width: 55px;
+  height: 30px;
+  color: #fff;
+}
+
+.button {
+  width: 100px;
+  height: 50px;
+  border: none;
+}
+
+.button:hover {
+  background-color: #ff0000;
 }
