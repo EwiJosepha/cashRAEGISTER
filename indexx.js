@@ -1,6 +1,5 @@
-const rootContainer = document.getElementById("root-element");
+const rootContainer = document.getElementById("container");
 const root = ReactDOM.createRoot(rootContainer);
-
 const currencies = [
   {
     name: "ONE HUNDRED",
@@ -86,53 +85,44 @@ const initialCashdrawer = [
     id: 10,
   },
 ];
-
-function DrawerItem({ name, num, id }) {
+const DrawerItem = ({ name, num, id }) => {
   return (
-    <div key={id} className="all">
+    <div key={id}>
       <h4>{name}</h4>
-      <div className="number">
-        <div className="divv">{num}</div>
-      </div>
+      <div className="fem">{num}</div>
     </div>
   );
-}
-
-function App() {
+};
+function Sect() {
   const [billAmount, setbillAmount] = React.useState();
   const [cashGiven, setcashGiven] = React.useState();
   const [cashdrawer, setcashdrawer] = React.useState(initialCashdrawer);
-  // const [mone, setMone] = React.useState(cashdrawer)
   const currenciesRef = React.useRef(
     currencies.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.value }), {})
-    ) 
-
-    let result = "";
-    const totalCashInDrawer = React.useMemo(
-      () => cashdrawer.reduce((acc, current) => acc + current.num, 0),
-      [cashdrawer]
-    );
-
-    const changeDue = React.useMemo(
-      () => cashGiven - billAmount,
-      [cashGiven, billAmount]
-    );
-    if (changeDue > totalCashInDrawer) {
-      result = "Insufficient Funds";
-    }
-    if (changeDue === totalCashInDrawer) {
-      result = "Closed";
-    }
-
-  //calculate change
+    ) ; // {'ONE HUNDRED': 100, 'TWENTY: 60'}
+  let result = "";
+  const totalCashInDrawer = React.useMemo(
+    () => cashdrawer.reduce((acc, current) => acc + current.num, 0),
+    [cashdrawer]
+  );
+  const changeDue = React.useMemo(
+    () => cashGiven - billAmount,
+    [cashGiven, billAmount]
+  );
+  if (changeDue > totalCashInDrawer) {
+    result = "Insufficient Funds";
+  }
+  if (changeDue === totalCashInDrawer) {
+    result = "Closed";
+  }
+  // calculate change
   const calculateChange = () => {
     if (totalCashInDrawer >= changeDue && changeDue > 0) {
       const changes = [];
       let currentChangeDue = changeDue;
       for (let i = cashdrawer.length - 1; i >= 0; i--) {
         const drawerItem = cashdrawer[i];
-        const baseUnit = currenciesRef.current[drawerItem.name];
-        // const numberOfUnit = Math.floor(cashdrawer.number / baseUnit)
+        const baseUnit = currenciesRef.current[drawerItem.name]; //number of type baseunit can be subtracted from the change
         const changeMultiple = Math.floor(currentChangeDue / baseUnit);
         const drawerItemMultiple = drawerItem.num / baseUnit;
         if (
@@ -147,7 +137,7 @@ function App() {
           currentChangeDue = 0;
           return { status: "OPEN", changes };
         }
-
+        // if change  due  is base unit
         if (changeMultiple > 0) {
           const newMultiple =
             changeMultiple >= drawerItemMultiple
@@ -161,80 +151,77 @@ function App() {
           currentChangeDue -= newMultiple * baseUnit;
         }
       }
-
-    
-    if (currentChangeDue > 0) {
-      return { status: "INSUFFICIENT FUNDS", changes: [] };
+      if (currentChangeDue > 0) {
+        return { status: "INSUFFICIENT FUNDS", changes: [] };
+      }
     }
+    return { status: "OPEN", changes: [] };
+  };
+  // convert change to a memo value
+  const change = React.useMemo(() => calculateChange(), [changeDue, cashdrawer]);
+  function callback(event) {
+    setbillAmount(event.target.value);
+    console.log(billAmount);
   }
-  return { status: "OPEN", changes: [] };
-};
-// convert change to a memo value
-const change = React.useMemo(() => calculateChange(), [changeDue, cashdrawer]);
-function callback(event) {
-  setbillAmount(event.target.value);
-  console.log(billAmount);
-}
-function call(event) {
-  setcashGiven(event.target.value);
-  console.log(cashGiven);
-}
-
-  // const changed = React.useMemo(()=>{
-  //   mone.forEach((mone) =>{
-  //   const numberOfUnit = Math.floor(mone.number / baseUnit)
-  //   const changeMultiple = Math.floor(due / baseUnit)
-
-  //   })
-  // }[changeDue, mone])
-
+  function call(event) {
+    setcashGiven(event.target.value);
+    console.log(cashGiven);
+  }
   return (
     <>
       <div className="container">
-        <div className="wrapper">
-          <div className="firstDiv">
-            <h1>Bill Amount</h1>
-            <div className="input1">
-              <input
-                type="number"
-                value={billAmount}
-                onChange={callback}
-                className="btn5"
-              />
-            </div>
-            <h1>Cash Given</h1>
-            <div className="input2">
-              <input
-                value={cashGiven}
-                onChange={call}
-                type="number"
-                className="btn2"
-              />
-            </div>
-          </div>
-          <button className="button">Return Change</button>
-          <br />
-          <p>{result}</p>
-          <p>Total cash in drawer is:</p>
-          <p>{totalCashInDrawer}</p>
-          {change.changes.map((change) => (
+        <div className="heading">
+          <h1>
+            <strong>
+              <i>Cash Register</i>
+            </strong>
+          </h1>
+        </div>
+        <p> Enter the bill amount</p>
+        <div className="all">
+          <input
+            id="bill-amt"
+            className="input-bill"
+            placeholder="Bill Amount"
+            type="number"
+            value={billAmount}
+            onChange={callback}
+          />
+          <input
+            className="pay-amt"
+            placeholder="Cash Given"
+            type="number"
+            value={cashGiven}
+            onChange={call}
+          />
+        </div>
+        <p className="usr-msg" />
+        <button>Returned Change</button>
+        <br />
+        <p>{result}</p>
+        <p>Total cash in drawer is:</p>
+        <p>{totalCashInDrawer}</p>
+        {change.changes.map((change) => (
           <DrawerItem key={change.id} num={change.num} name={change.name} />
         ))}
-          <br />
-          <div className="secondDiv">
-            <DrawerItem  {...{
+        <br />
+        <div className="change-table">
+          <DrawerItem
+            {...{
               name: "Cash($)",
               num: "Number",
               id: 1,
-            }} />
-              {cashdrawer.map((item) => (
+            }}
+          />
+          {cashdrawer.map((item) => (
             <DrawerItem key={item.id} num={item.num} name={item.name} />
           ))}
-          </div>
         </div>
       </div>
     </>
   );
 }
+root.render(<Sect />);
 
-root.render(<App />);
+
+
