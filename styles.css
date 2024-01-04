@@ -34,25 +34,11 @@ h1 {
   width: 45%;
   gap: 30px;
   height: 45%;
-  background-color: #f7f5f1;
+  background-color: #f1e2c3;
   border: 2px solid #000;
   border-radius: 8px;
   box-shadow: 2px 2px 8xp 2px;
 }
-
-/* .secondDiv {
-  gap: 30px;
-  padding-left: 20px;
-  padding: 30px;
-  color: #e5e0e0;
-  width: 200px;
-  height: 100px;
-  border-radius: 10px;
-  border: 1px solid #3b3838;
-  box-shadow: 2px 2px 20px 2px;
-  background-color: #323131;
-
-} */
 
 .secondDiv {
   padding: 30px;
