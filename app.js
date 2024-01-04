@@ -124,6 +124,8 @@ function App() {
       result = "Closed";
     }
 
+    
+
   //calculate change
   const calculateChange = () => {
     if (totalCashInDrawer >= changeDue && changeDue > 0) {

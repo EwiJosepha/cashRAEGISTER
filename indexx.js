@@ -196,7 +196,7 @@ function Sect() {
           />
         </div>
         <p className="usr-msg" />
-        <button>Returned Change</button>
+        <button >Returned Change</button>
         <br />
         <p>{result}</p>
         <p>Total cash in drawer is:</p>
