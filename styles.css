@@ -1,0 +1,148 @@
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: #f1ede5;
+}
+
+h1 {
+  padding-top: 15px;
+  text-align: center;
+  color: #292525;
+  font-family: sans-serif;
+}
+
+.wrapper {
+  gap: 30px;
+  margin: 0 auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f3f3;
+  border-radius: 10px;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 20px 2px;
+  width: 90%;
+  height: 90%;
+}
+
+.firstDiv {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  gap: 30px;
+  height: 45%;
+  background-color: #f1e2c3;
+  border: 2px solid #000;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8xp 2px;
+}
+
+.secondDiv {
+  padding: 30px;
+  background-color: #aca6a6;
+  box-shadow: 2px 2px 22px 2px;
+  display: flex;
+  gap: 1rem;
+  width: 70%;
+  height: 40%;
+  flex-wrap: wrap;
+  color: #000;
+}
+
+
+.input1 {
+  display: flex;
+  justify-content: space-between;
+  outline: none;
+}
+
+.input2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+input {
+  outline: none;
+}
+
+.btn5{
+  width: 70%;
+  height: 40px;
+}
+
+.btn2{
+  width: 70%;
+  height: 40px;
+}
+
+.submit1 {
+  width: 20%;
+  height: 40px;
+  border: none;
+  background-color: #b6c1b6;
+}
+
+.submit2 {
+  width: 20%;
+  height: 40px;
+  border: none;
+  background-color: #555c55;
+}
+
+.submit1:hover {
+  background-color: #7d7676;
+}
+
+.submit2:hover {
+  background-color: #3e3a3a;
+}
+
+h2 {
+  color: #000;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+
+.returnBalance {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 250px;
+  border: 2px solid #3b3838;
+  border-radius: 10px;
+  box-shadow: 2px 2px 20px 2px;
+  background-color: #474444;
+  overflow: hidden;
+  color: #fff;
+}
+
+h4 {
+  color: #201818;
+}
+
+
+.divv {
+  padding: 10px;
+  border: none;
+  box-shadow: 2px 2px 2px 1px;
+  background-color: #4c4741;
+  width: 55px;
+  height: 30px;
+  color: #faf6f6;
+}
+
+.button {
+  width: 100px;
+  height: 50px;
+  border: none;
+}
+
+.button:hover {
+  background-color: #ff0000;
+}
